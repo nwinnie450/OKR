@@ -51,6 +51,7 @@ export function ProtectedRoute({
     const dashboardMap: Record<UserRole, string> = {
       admin: '/admin',
       manager: '/manager',
+      team_lead: '/member',
       member: '/member',
       viewer: '/member', // Viewers see member dashboard (read-only)
     };
