@@ -26,29 +26,29 @@ async function createAdmin() {
     console.log('✅ MongoDB Connected');
 
     // Check if admin already exists
-    const existingAdmin = await User.findOne({ email: 'admin@merquri.io' });
+    const existingAdmin = await User.findOne({ email: 'admin@okr.com' });
 
     if (existingAdmin) {
       console.log('⚠️  Admin user already exists');
 
       // Update the existing user to be admin
-      const hashedPassword = await bcrypt.hash('Password888!', 10);
+      const hashedPassword = await bcrypt.hash('admin123', 10);
       existingAdmin.password = hashedPassword;
       existingAdmin.role = 'admin';
-      existingAdmin.name = 'Admin';
+      existingAdmin.name = 'Admin User';
       await existingAdmin.save();
 
       console.log('✅ Updated existing user to admin:');
-      console.log('   Email: admin@merquri.io');
-      console.log('   Password: Password888!');
+      console.log('   Email: admin@okr.com');
+      console.log('   Password: admin123');
       console.log('   Role:', existingAdmin.role);
     } else {
       // Create new admin user
-      const hashedPassword = await bcrypt.hash('Password888!', 10);
+      const hashedPassword = await bcrypt.hash('admin123', 10);
 
       const admin = new User({
-        name: 'Admin',
-        email: 'admin@merquri.io',
+        name: 'Admin User',
+        email: 'admin@okr.com',
         password: hashedPassword,
         role: 'admin',
         teams: [],
@@ -58,8 +58,8 @@ async function createAdmin() {
 
       await admin.save();
       console.log('✅ Admin user created successfully:');
-      console.log('   Email: admin@merquri.io');
-      console.log('   Password: Password888!');
+      console.log('   Email: admin@okr.com');
+      console.log('   Password: admin123');
       console.log('   Role: admin');
     }
 
