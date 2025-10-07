@@ -1,5 +1,5 @@
 // User and Team Types
-export type UserRole = 'admin' | 'manager' | 'member' | 'viewer';
+export type UserRole = 'admin' | 'manager' | 'team_lead' | 'member' | 'viewer';
 
 export interface User {
   id: string;
@@ -7,6 +7,8 @@ export interface User {
   name: string;
   role: UserRole;
   teamId?: string;
+  teams?: string[];
+  departments?: string[];
   avatar?: string;
   avatarUrl?: string;
   createdAt: string | Date;
